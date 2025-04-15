@@ -71,4 +71,4 @@ export const columns = [
   { name: "ACTIONS", uid: "actions" },
 ]
 
-export const baseUrl = "http://localhost:3000"
+export const baseUrl = "https://reactmemes-production.up.railway.app"

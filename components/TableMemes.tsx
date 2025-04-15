@@ -145,7 +145,7 @@ const TableMemes = () => {
     if (!activeMeme) return
 
     if (!isValidJpgUrl(imageUrl)) {
-      setImageError("Please enter a valid image URL ending in .jpg, .png, etc.")
+      setImageError("Please enter a valid image URL ending in .jpg")
 
       return
     }
