@@ -3,10 +3,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "cdn.memes.com",
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "**",
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

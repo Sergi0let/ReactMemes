@@ -5,8 +5,9 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 }
 
 export interface MemeType {
-  id: number | string
   title: string
   imgUrl: string
-  likes: number
+  likes: string
+  id?: number | string
+  actions?: string
 }

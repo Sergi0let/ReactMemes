@@ -13,6 +13,9 @@ const config = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      screens: {
+        'xs': '340px',
+      }
     },
   },
   darkMode: "class",

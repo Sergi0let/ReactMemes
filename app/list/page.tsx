@@ -1,24 +1,16 @@
-import { MemeCard } from "@/components/MemeCard"
-import { memesData } from "@/constants"
+import { ListMemes } from "@/components"
 
-const Page = () => {
+const Page = (): JSX.Element => {
   return (
     <div className="mb-6">
       <h1 className="text-center mb-4 md:mb-6 text-2xl sm:text-3xl font-bold">
-        Mems list
+        Memes list
       </h1>
       <div>
-        <ul 
-        className='masonry-container'
-          // className="grid grid-cols-1 min-[320px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4"
-          >
-          {memesData.map((meme) => (
-            <MemeCard key={meme.id} {...meme} />
-          ))}
-        </ul>
+        <ListMemes />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

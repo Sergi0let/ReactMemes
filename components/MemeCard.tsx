@@ -18,9 +18,13 @@ const MemeCard = ({ imgUrl, title, likes }: Props) => {
           {title}
         </h3>
         <div className="flex items-center mt-2 justify-between">
-          <Badge color="secondary" content={likes} size="md">
-            <span className="text-xl sm:text-3xl">❤️</span>
-          </Badge>
+          {likes ? (
+            <Badge color="secondary" content={likes} size="md">
+              <span className="text-xl sm:text-3xl">❤️</span>
+            </Badge>
+          ) : (
+            <span />
+          )}
           <Button
             className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg hover:brightness-110 transition-all"
             radius="full"
@@ -32,8 +36,7 @@ const MemeCard = ({ imgUrl, title, likes }: Props) => {
         </div>
       </CardBody>
     </Card>
-  );
-};
+  )
+}
 
 export { MemeCard }
-

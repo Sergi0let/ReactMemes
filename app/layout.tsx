@@ -4,33 +4,72 @@ import { Metadata, Viewport } from "next"
 
 import { Providers } from "./providers"
 
-import { Navbar } from "@/components/navbar"
+import { Footer, Navbar } from "@/components"
 import { fontSans } from "@/config/fonts"
-import { siteConfig } from "@/config/site"
+import { baseUrl } from "@/constants"
+import { MemeProvider } from "@/context/MemeContext"
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  icons: {
-    icon: "/favicon.ico",
-  },
-};
+// export const metadata: Metadata = {
+//   title: {
+//     default: siteConfig.name,
+//     template: `%s - ${siteConfig.name}`,
+//   },
+//   description: siteConfig.description,
+//   icons: {
+//     icon: "/favicon.ico",
+//   },
+// }
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "Memasic Mania"
+  const description =
+    "Watch memes, create your own, and share them with the world."
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title,
+    description,
+    themeColor: "#ffffff",
+    icons: {
+      icon: "/favicon/favicon.ico",
+      apple: "/favicon/apple-icon.png",
+      shortcut: "/favicon/favicon.ico",
+      other: [
+        {
+          rel: "mask-icon",
+          url: "/favicon/mask-icon.svg",
+          color: "#f2e9f2",
+        },
+      ],
+    },
+    manifest: "/favicon/manifest.json",
+    openGraph: {
+      title,
+      description,
+      url: baseUrl,
+      siteName: "Beautica",
+      locale: "en_US",
+      type: "website",
+      images: [
+        {
+          url: "/favicon/main.jpg",
+          width: 1200,
+          height: 630,
+          alt: "",
+        },
+      ],
+    },
+  }
+}
 
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-};
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html suppressHydrationWarning lang="en">
       <head />
@@ -41,20 +80,19 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
-            <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-4  md:px-6 flex-grow">
-              {children}
-            </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <div className="flex relative z-10 items-center gap-1 text-current">
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">S.Vashkevych</p>
-              </div>
-            </footer>
-          </div>
+          <MemeProvider>
+            <div className="relative flex flex-col h-screen">
+              <Navbar />
+              <main className="container mx-auto max-w-7xl pt-16 px-4  md:px-6 flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </MemeProvider>
         </Providers>
       </body>
     </html>
-  );
+  )
 }
+
+export default RootLayout

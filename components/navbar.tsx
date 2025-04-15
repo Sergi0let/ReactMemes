@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { Link } from "@heroui/link"
 import {
@@ -16,16 +16,18 @@ import Image from "next/image"
 import NextLink from "next/link"
 import { useState } from "react"
 
-import { GithubIcon } from "@/components/icons"
-import { ThemeSwitch } from "@/components/theme-switch"
+import { GithubIcon } from "./icons"
+import { ThemeSwitch } from "./ThemeSwitch"
+
 import { siteConfig } from "@/config/site"
 
-export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navItems = siteConfig.navItems.slice(1)
 
   const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+    setIsMenuOpen(false)
+  }
 
   return (
     <HeroUINavbar
@@ -45,11 +47,13 @@ export const Navbar = () => {
               src="/logo/meme_doge_dog.png"
               width={42}
             />
-            <p className="font-bold ml-2 text-inherit">ReactMemes </p>
+            <p className="font-bold hidden xs:block ml-2 text-inherit">
+              ReactMemes
+            </p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
@@ -88,7 +92,7 @@ export const Navbar = () => {
 
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navItems.map((item, index) => (
+          {navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color="foreground"
@@ -103,5 +107,7 @@ export const Navbar = () => {
         </div>
       </NavbarMenu>
     </HeroUINavbar>
-  );
-};
+  )
+}
+
+export { Navbar }
