@@ -86,7 +86,8 @@ const TableMemes = () => {
     title.length <= 100 &&
     isValidJpgUrl(imageUrl) &&
     !isNaN(Number(likes)) &&
-    Number(likes) >= 0
+    Number(likes) >= 0 &&
+    Number(likes) <= 99
 
   const handleEdit = (meme: MemeType) => {
     setActiveMeme(meme)
@@ -107,13 +108,15 @@ const TableMemes = () => {
       switch (columnKey) {
         case "imgUrl":
           return (
-            <figure className="size-16 rounded overflow-hidden shadow-md">
-              <img
-                alt={meme.title}
-                className="w-full h-full object-cover"
-                src={cellValue as string}
-              />
-            </figure>
+            <Tooltip content={cellValue}>
+              <figure className="size-16 rounded overflow-hidden shadow-md">
+                <img
+                  alt={meme.title}
+                  className="w-full h-full object-cover"
+                  src={cellValue as string}
+                />
+              </figure>
+            </Tooltip>
           )
         case "title":
           return <p className="text-bold text-sm capitalize">{cellValue}</p>

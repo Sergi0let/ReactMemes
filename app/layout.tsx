@@ -4,7 +4,7 @@ import { Metadata, Viewport } from "next"
 
 import { Providers } from "./providers"
 
-import { Footer, Navbar } from "@/components"
+import { Footer, Header } from "@/components"
 import { fontSans } from "@/config/fonts"
 import { baseUrl } from "@/constants"
 import { MemeProvider } from "@/context/MemeContext"
@@ -82,7 +82,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <MemeProvider>
             <div className="relative flex flex-col h-screen">
-              <Navbar />
+              <Header />
               <main className="container mx-auto max-w-7xl pt-16 px-4  md:px-6 flex-grow">
                 {children}
               </main>

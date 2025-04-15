@@ -21,7 +21,7 @@ import { ThemeSwitch } from "./ThemeSwitch"
 
 import { siteConfig } from "@/config/site"
 
-const Navbar = () => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const navItems = siteConfig.navItems.slice(1)
 
@@ -110,4 +110,4 @@ const Navbar = () => {
   )
 }
 
-export { Navbar }
+export { Header }

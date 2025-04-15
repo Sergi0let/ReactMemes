@@ -25,7 +25,7 @@ const Home = (): JSX.Element => {
         <Link
           isExternal
           className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
+          href={siteConfig.links.codeLink}
         >
           <GithubIcon size={20} />
           GitHub
